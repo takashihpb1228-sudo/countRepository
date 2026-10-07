@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>カウンターアプリ</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; marginTop: 50px; }
+        .count-display { font-size: 4em; color: #333; margin: 20px 0; }
+        button { font-size: 1.2em; padding: 10px 20px; cursor: pointer; margin: 5px; }
+        .btn-add { background-color: #4CAF50; color: white; border: none; }
+        .btn-reset { background-color: #f44336; color: white; border: none; }
+    </style>
+</head>
+<body>
+
+    <h1>カウントアプリ</h1>
+
+    <!-- コントローラーから受け取った currentCount を表示 -->
+    <div class="count-display" th:text="${currentCount}">0</div>
+	
+    <!-- リセットボタン -->
+    <form th:action="@{/counter/reset}" method="post" style="display: inline-block;">
+        <button type="submit" class="btn-reset">リセット</button>
+    </form>
+	
+	<!-- カウントダウンボタン ★追加 -->
+	    <form th:action="@{/counter/sub}" method="post" style="display: inline-block;">
+	        <button type="submit" style="background-color: #2196F3; color: white; border: none;">カウントダウン (-1)</button>
+	    </form>
+
+    <!-- カウントアップボタン -->
+    <form th:action="@{/counter/add}" method="post" style="display: inline-block;">
+        <button type="submit" class="btn-add">カウントアップ (+1)</button>
+    </form>
+
+
+</body>
+</html>
